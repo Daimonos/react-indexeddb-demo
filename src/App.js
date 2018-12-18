@@ -5,6 +5,7 @@ import ServiceOrdersListComponent from './components/service-orders/service-orde
 import HomeComponent from './components/home/home-component';
 import ServiceOrderDetailComponent from './components/service-orders/service-order-detail';
 import ServiceOrderEditComponent from './components/service-orders/service-orders-edit';
+import NotFoundComponent from './components/errors/NotFound';
 class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/serviceOrders/new" component={ServiceOrderEditComponent} />
           <Route exact path="/serviceOrders/:id/edit" component={ServiceOrderEditComponent} />
           <Route exact path="/serviceOrders/:id" component={ServiceOrderDetailComponent} />
+          <Route component={NotFoundComponent} />
         </Switch>
       </div >
 
