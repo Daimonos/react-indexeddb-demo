@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { DBService } from '../../services/DBService';
 import { CircularProgress, Table, TableHead, TableCell, TableRow, TableBody } from '@material-ui/core';
+import './service-orders-list.css';
+
 export default class ServiceOrdersListComponent extends React.Component {
-  style = {
-    head: {
-      backgroundColor: '#FFF',
-      position: 'sticky',
-      top: 0
-    }
-  }
   constructor(props) {
     super(props)
     this._db = new DBService()
@@ -42,10 +37,10 @@ export default class ServiceOrdersListComponent extends React.Component {
       {!isLoading && <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={this.style.head}>ID</TableCell>
-            <TableCell style={this.style.head}>Bucket</TableCell>
-            <TableCell style={this.style.head}>Business Unit</TableCell>
-            <TableCell style={this.style.head}>Status</TableCell>
+            <TableCell className="sticky-header">ID</TableCell>
+            <TableCell className="sticky-header">Bucket</TableCell>
+            <TableCell className="sticky-header">Business Unit</TableCell>
+            <TableCell className="sticky-header">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody style={{ overflowY: 'scroll' }}>
