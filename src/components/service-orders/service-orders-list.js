@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DBService } from '../../services/DBService';
+import { Link } from 'react-router-dom';
 import { CircularProgress, Table, TableHead, TableCell, TableRow, TableBody } from '@material-ui/core';
 import './service-orders-list.css';
 
@@ -45,7 +46,8 @@ export default class ServiceOrdersListComponent extends React.Component {
         </TableHead>
         <TableBody style={{ overflowY: 'scroll' }}>
           {orders && orders.map(o => <TableRow key={o.id}>
-            <TableCell>{o.id}</TableCell>
+            <TableCell>
+              <Link to={'/serviceOrders/' + o.id}>{o.id}</Link></TableCell>
             <TableCell>{o.bucket}</TableCell>
             <TableCell>{o.businessUnit}</TableCell>
             <TableCell>{o.status}</TableCell>
