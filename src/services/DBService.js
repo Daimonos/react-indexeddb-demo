@@ -24,6 +24,10 @@ const dbPromise = db.open(FIT_DATABASE_NAME, FIT_DATABASE_VERSION, function (upg
     case 1:
       upgradeDb.createObjectStore('ServiceOrders', { keyPath: 'id' });
       const tx = upgradeDb.transaction.objectStore('ServiceOrders', 'readwrite')
+      tx.createIndex('Bucket', 'bucket')
+      tx.createIndex('businessUnit', 'businessUnit')
+      tx.createIndex('status', 'status')
+      tx.createIndex('BucketBusinessUnitStatus', ['bucket', 'businessUnit', 'status'])
       for (let i = 0; i < 100000; i++) {
         tx.put({
           id: i,
@@ -32,11 +36,6 @@ const dbPromise = db.open(FIT_DATABASE_NAME, FIT_DATABASE_VERSION, function (upg
           status: STATUS[Math.floor(Math.random() * STATUS.length)]
         });
       }
-      tx.createIndex('Bucket', 'bucket')
-      tx.createIndex('businessUnit', 'businessUnit')
-      tx.createIndex('status', 'status')
-      tx.createIndex('BucketBusinessUnitStatus', ['bucket', 'businessUnit', 'status'])
-
   }
 });
 
